@@ -1,0 +1,36 @@
+---
+import { config } from "../../site.config";
+import { getArticleFromSNS } from "../api/sns/getArticleFromSNS";
+import Card from "../components/Card.astro";
+
+const { qiita, zenn } = await getArticleFromSNS();
+---
+
+<section>
+  <h2>Qiita/<a href={`https://qiita.com/${config.qiitaId}`}>RinGoku</a></h2>
+  <ul role="list" class="link-card-grid">
+    {qiita.map((p) => <Card href={p.url} title={p.title} body={p.body} />)}
+  </ul>
+</section>
+<section>
+  <h2>Zenn/<a href={`https://zenn.dev/${config.zennId}`}>RinGoku</a></h2>
+  <ul role="list" class="link-card-grid">
+    {
+      zenn.items.map((p) => (
+        <Card href={p.link} title={p.title} body={p.content?.slice(0, 30)} />
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  a {
+    color: var(--accent);
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+</style>
