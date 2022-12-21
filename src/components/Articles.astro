@@ -1,26 +1,76 @@
 ---
 import { config } from "../../site.config";
 import { getArticleFromSNS } from "../api/sns/getArticleFromSNS";
-import Card from "../components/Card.astro";
+import Card from "../components/ArticleCard.astro";
 
 const { qiita, zenn } = await getArticleFromSNS();
 ---
 
-<section>
-  <h2>Qiita/<a href={`https://qiita.com/${config.qiitaId}`}>RinGoku</a></h2>
-  <ul role="list" class="link-card-grid">
-    {qiita.map((p) => <Card href={p.url} title={p.title} body={p.body} />)}
-  </ul>
-</section>
-<section>
-  <h2>Zenn/<a href={`https://zenn.dev/${config.zennId}`}>RinGoku</a></h2>
-  <ul role="list" class="link-card-grid">
-    {
-      zenn.items.map((p) => (
-        <Card href={p.link} title={p.title} body={p.content?.slice(0, 30)} />
-      ))
-    }
-  </ul>
+<section class="bg-white light:bg-gray-900">
+  <div class="container px-6 py-10 mx-auto">
+    <div class="text-center">
+      <h1
+        class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl light:text-white"
+      >
+        Qiita
+      </h1>
+    </div>
+    <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3">
+      {
+        qiita.items.map((p) => (
+          <Card
+            href={p.link}
+            title={p.title}
+            body={p.content?.slice(0, 30)}
+            date={p.pubDate}
+            type={"Qiita"}
+          />
+        ))
+      }
+    </div>
+    <div class="grid place-content-center p-10">
+      <a
+        href="https://qiita.com/RinGoku"
+        class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-qiita rounded-lg hover:bg-qiita focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Qiitaで他の記事を読む
+      </a>
+    </div>
+  </div>
+  <div class="container px-6 py-10 mx-auto">
+    <div class="text-center">
+      <h1
+        class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl light:text-white"
+      >
+        Zenn
+      </h1>
+    </div>
+    <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3">
+      {
+        zenn.items.map((p) => (
+          <Card
+            href={p.link}
+            title={p.title}
+            body={p.content?.slice(0, 30)}
+            date={p.pubDate}
+            type={"Zenn"}
+          />
+        ))
+      }
+    </div>
+    <div class="grid place-content-center p-10">
+      <a
+        href="https://zenn.dev/ringoku"
+        class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-zenn rounded-lg hover:bg-zenn focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Zennで他の記事を読む
+      </a>
+    </div>
+  </div>
 </section>
 
 <style>
