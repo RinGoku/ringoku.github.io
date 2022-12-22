@@ -6,124 +6,44 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Welcome to RinGoku Profile.">
   <main>
-    <div class="first">If you change your perspective,</div>
-    <div class="second">you can see a different scenery.</div>
-    <div class="third">〜見方を変えれば、見える世界が変わる〜</div>
-    <a class="fourth" href="/mesh"
-      >先に進む
-      <span class="arrow arrow1">＞</span>
-      <span class="arrow arrow2">＞</span>
-      <span class="arrow arrow3">＞</span>
-    </a>
+    <Articles />
   </main>
 </Layout>
 
 <style>
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
   main {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    place-content: center;
+    margin: auto;
+    padding: 0;
+  }
+  h1 {
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 800;
+    margin: 0;
   }
-  .first {
-    opacity: 0;
-    animation: fadeIn 1s 0.5s forwards;
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
   }
-  .second {
-    opacity: 0;
-    animation: fadeIn 1s 1.8s forwards;
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
   }
-  .third {
-    opacity: 0;
-    animation: fadeIn 1s 3s forwards;
-    font-size: 1.4rem;
-    text-align: right;
-    font-weight: 500;
-    margin-top: 8px;
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
   }
-  .fourth {
-    opacity: 0;
-    animation: fadeIn 1s 4s forwards;
-    font-weight: 500;
-    text-align: right;
-    font-size: 1.2rem;
-    margin-top: 24px;
-  }
-
-  .arrow {
-    will-change: opacity;
-  }
-
-  .arrow1 {
-    animation: fade1 3s infinite;
-  }
-
-  .arrow2 {
-    animation: fade2 3s infinite;
-  }
-
-  .arrow3 {
-    animation: fade3 3s infinite;
-  }
-
-  @keyframes fade1 {
-    0% {
-      opacity: 0;
-    }
-    33.333% {
-      opacity: 1;
-    }
-    66.666% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes fade2 {
-    0% {
-      opacity: 0;
-    }
-    16.666% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    83.333% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes fade3 {
-    0% {
-      opacity: 0;
-    }
-    16.666% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-    83.333% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  .instructions strong {
+    color: rgb(var(--accent));
   }
 </style>

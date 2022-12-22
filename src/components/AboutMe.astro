@@ -9,11 +9,11 @@ const histories = [
 ---
 
 <div
-  class="wrapper relative before:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 pl-5 w-full"
+  class="wrapper relative before:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 pl-5 w-full bg-white"
 >
   {
     histories.map((his) => (
-      <div class="flex items-center py-4">
+      <div class="flex items-center py-4 text-2xl">
         <div class="shrink-0 w-40 text-base">{his.time}</div>
         <div>{his.desc}</div>
       </div>
@@ -28,6 +28,10 @@ const histories = [
     to {
       height: 100%;
     }
+  }
+  .wrapper {
+    width: 50vw;
+    max-width: 100%;
   }
   .wrapper::before {
     position: absolute;

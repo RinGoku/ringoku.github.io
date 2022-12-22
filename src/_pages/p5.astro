@@ -1,0 +1,58 @@
+---
+---
+
+<!-- <Layout title="Welcome to RinGoku Profile."> -->
+<main>
+  <script is:inline src="/js/p5.min.js"></script>
+  <script is:inline>
+    function setup() {
+      createCanvas(500, 500);
+    }
+
+    function draw() {
+      background("skyblue");
+      let numA = 10;
+      let numB = 6;
+      const scalar = 50;
+      numA *= scalar;
+      numB *= scalar;
+      let wd = numB;
+      let xPos = 0;
+      let yPos = 0;
+      let itr = 0;
+
+      while (wd > 0) {
+        itr++;
+        if (itr % 2 === 1) {
+          while (xPos + wd <= numA) {
+            strokeWeight(4);
+            stroke(51);
+            rect(xPos, yPos, wd, wd);
+            xPos += wd;
+          }
+          wd = numA - yPos;
+        } else {
+          while (yPos + wd <= numA) {
+            strokeWeight(4);
+            stroke(51);
+            rect(xPos, yPos, wd, wd);
+            yPos += wd;
+          }
+          wd = numB - yPos;
+        }
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(500, 500);
+    }
+  </script>
+</main>
+<!-- </Layout> -->
+
+<style>
+  main {
+    width: 100vw;
+    height: 100vh;
+  }
+</style>

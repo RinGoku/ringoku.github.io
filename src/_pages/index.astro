@@ -1,0 +1,78 @@
+---
+import Articles from "../components/Articles.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to RinGoku Profile.">
+  <main>
+    <div class="first">If you change your perspective,</div>
+    <div class="second">you can see a different scenery.</div>
+    <div class="third">〜見方を変えれば、見える世界が変わる〜</div>
+    <a class="fourth" href="/mesh">
+      Go
+      <span class="arrow">＞</span>
+      <span class="arrow">＞</span>
+      <span class="arrow">＞</span>
+    </a>
+  </main>
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  .first {
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
+  }
+  .second {
+    opacity: 0;
+    animation: fadeIn 1s 1.8s forwards;
+  }
+  .third {
+    opacity: 0;
+    animation: fadeIn 1s 3s forwards;
+    font-size: 1.4rem;
+    text-align: right;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+  .fourth {
+    opacity: 0;
+    animation: fadeIn 1s 4s forwards;
+    font-weight: 500;
+    text-align: right;
+    font-size: 1.2rem;
+    margin-top: 24px;
+  }
+
+  .arrow {
+    display: inline-block;
+    will-change: opacity;
+    animation: fade 2s infinite;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(25px);
+    }
+  }
+</style>
